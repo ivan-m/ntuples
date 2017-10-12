@@ -18,7 +18,7 @@ type family ListFunction (ts :: [*]) (r :: *) :: * where
   ListFunction '[]       r =                      r
   ListFunction (t ': ts) r = t -> ListFunction ts r
 
-newtype NTuple (ts :: [*]) = NTuple { uncurryN :: (forall r. ListFunction ts r -> r) }
+newtype NTuple (ts :: [*]) = NTuple { unNTuple :: (forall r. ListFunction ts r -> r) }
 
 tuple0 :: NTuple '[]
 tuple0 = NTuple id
